@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import './Chat.css';
@@ -28,7 +28,7 @@ const Chat = ({location}) => {
         socket.emit('join', {name, room});
 
         return () => {
-            socket.emit('disconnect');
+            socket.disconnect();
             socket.off();
         }
 
@@ -49,13 +49,28 @@ const Chat = ({location}) => {
     };
 
 
+    // Scrool to bottom
+    const messagesEndRef = useRef(null);
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+    };
+    useEffect(scrollToBottom, [messages]);
+
+
     console.log(message, messages);
 
     return (
         <div className="wrap-chat">
-            <div className="wrap-chat-container">
-                <InfoBar room={room} />
-                <Messages messages={messages} name={name} />
+                
+            <div className="chat-left">
+
+            </div>
+            <div className="chat-right">
+                <InfoBar room={room} name={name} />
+                <div className="chat-content">
+                    <Messages messages={messages} name={name} />
+                    <div ref={messagesEndRef} />
+                </div>
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
         </div>

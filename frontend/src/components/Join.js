@@ -11,17 +11,18 @@ const Join = ({history}) => {
 
     return (
         <div className="wrap-join" onSubmit={submitHandler}>
-            <h1 style={{textAlign: 'center'}}>Join chat</h1>
+            <h1 style={{textAlign: 'center'}}>JOIN CHAT GROUP &nbsp;&nbsp;<i className="fas fa-comment-dots"/></h1>
+            <hr />
             <form className="ui form">
                 <div className="field">
-                    <label style={{color: '#fff'}}>Name</label>
-                    <input type="text" name="name" onChange={(e) => setName(e.target.value)} placeholder="First Name" />
+                    <label style={{color: '#fff'}}>Your name</label>
+                    <input type="text" name="name" onChange={(e) => setName(e.target.value)} placeholder="Enter your name.." required />
                 </div>
-                <div className="field">
-                    <label style={{color: '#fff'}}>Room</label>
-                    <input type="text" name="room" onChange={(e) => setRoom(e.target.value)} placeholder="First Name" />
+                <div className="field" style={{marginBottom: '30px'}}>
+                    <label style={{color: '#fff'}}>ID Room</label>
+                    <input type="text" name="room" onChange={(e) => setRoom(e.target.value)} placeholder="Enter ID room..." />
                 </div>
-                <button className={`ui ${(!name || !room) ? 'disabled' : ''} button` } type="submit">Join</button>
+                <button className={`ui ${(!name || !room) ? 'disabled' : ''} blue button` } type="submit">Join chat</button>
             </form>
         </div>
     );

@@ -5,16 +5,43 @@
     display: flex;
     justify-content: center;
     padding-top: 100px;
-    flex-direction: row;
+    min-height: 100vh;
 }
 
-.wrap-chat-container{
-    width: 400px;
-    height: 600px;
+
+.chat-left{
+    width: 10%;
+    height: 75vh;
+    background-color: #2c2c2c;
+}
+
+.chat-right{
+    width: 50%;
+    height: 75vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.chat-content{
+    /* border: 1px solid black; */
+    max-height: 62vh;
+    min-height:62vh;
     overflow-y: auto;
-    align-content: space-between;
+    position: relative;
+    margin-top: -13px;
+}
+
+@media (max-width:600px){
+    .chat-left{
+        width: 20%;
+        height: 75vh;
+    }
+    
+    .chat-right{
+        width: 60%;
+        height: 75vh;
+    }
 }

@@ -1,7 +1,36 @@
 .wrap-join{
-    background-color: #1A1A1D;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.911),rgb(10, 10, 10)) , url('https://images.pexels.com/photos/6369354/pexels-photo-6369354.jpeg?cs=srgb&dl=pexels-chuck-johnson-6369354.jpg&fm=jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
     width: 100%;
     height: 100vh;
     color: #fff;
-    padding: 150px 200px;
+    padding: 150px 600px;
+}
+
+.field{
+    margin-top: 30px !important;
+}
+
+@media (max-width: 1550px) {
+    .wrap-join{
+        padding: 150px 300px;
+    }
+}
+
+@media (max-width: 1001px) {
+    .wrap-join{
+        padding: 150px 80px;
+    }
+}
+
+
+@media (max-width: 467px) {
+    .wrap-join{
+        padding: 110px 25px;
+    }
+
+    .wrap-join h1{
+        font-size: 25px;
+    }
 }

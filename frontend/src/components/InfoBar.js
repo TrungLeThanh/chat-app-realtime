@@ -1,10 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const InfoBar = ({room}) => {
+const InfoBar = ({ room, name }) => {
 
     return (
-        <div style={{height: '60px', borderRadius: '0', width: '400px', position: 'fixed'}} className="ui blue inverted segment">
-            <span>{room} <i className="fas fa-circle" style={{color: 'green'}}/></span>
+        <div style={{borderRadius: '0', height: '65px', display: 'flex', justifyContent: 'space-between'}} className="ui blue inverted segment">
+            <p>{room} <br /> {name} &nbsp;<i className="fas fa-circle" style={{color: 'green', fontSize: '10px'}}/></p>
+            <Link to='/' style={{lineHeight: '10px', marginTop: '5px'}} className="ui google plus button">Leave</Link>
         </div>
     );
 };
