@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 import './Chat.css';
 import InfoBar from './InfoBar';
 import Input from './Input';
+import Messages from './Messages/Messages';
 
 let socket;
 
@@ -24,11 +25,9 @@ const Chat = ({location}) => {
         setName(name);
         setRoom(room);
 
-        socket.emit('join', {name, room}, () => {
-            
-        });
+        socket.emit('join', {name, room});
 
-        return () =>{
+        return () => {
             socket.emit('disconnect');
             socket.off();
         }
@@ -49,12 +48,14 @@ const Chat = ({location}) => {
         }
     };
 
+
     console.log(message, messages);
 
     return (
         <div className="wrap-chat">
             <div className="wrap-chat-container">
                 <InfoBar room={room} />
+                <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
         </div>
