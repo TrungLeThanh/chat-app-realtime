@@ -9,15 +9,14 @@
     margin-top: 7px;
     display: flex;
     justify-content: flex-end;
-    padding-right: 25px;
+    padding-left: 30%;
 }
 
 .content{
     padding: 5px 10px !important;
     border-radius: 18px;
     background-color: #3894da;
-    color: rgb(41, 41, 41);
-    border: 1px solid black;
+    color: rgb(75, 75, 75);
 }
 
 .content1{
@@ -34,5 +33,6 @@
     margin-top: 7px;
     display: flex;
     justify-content: flex-start;
-    padding-left: 25px;
+    padding-left: 5px;
+    padding-right: 30%;
 }

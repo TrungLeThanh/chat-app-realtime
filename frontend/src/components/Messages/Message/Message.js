@@ -11,6 +11,8 @@ const Message = ({ message: { text, user }, name}) => {
         currentUser = true;
     }
 
+    console.log(user)
+
     return (
         currentUser ? 
         (
@@ -21,7 +23,7 @@ const Message = ({ message: { text, user }, name}) => {
                             {ReactEmoji.emojify(text)}
                         </div>
                         <div className="label">
-                            <b style={{fontSize: '10px', marginLeft: '7px'}} className="ui grey circular label">{trimmedName.charAt(0)}</b>
+                            <b style={{fontSize: '10px', marginLeft: '7px'}} className="ui circular label">{trimmedName.charAt(0).toUpperCase()}</b>
                         </div>
                     </div>
                 </div>
@@ -31,12 +33,23 @@ const Message = ({ message: { text, user }, name}) => {
             <div className="mess-left">
                 <div className="ui feed">
                     <div className="event">
-                        <div className="label">
-                            <b style={{fontSize: '10px'}} className="ui grey circular label">{user.charAt(0)}</b>
-                        </div>
-                        <div className="content content1">
-                            {ReactEmoji.emojify(text)}
-                        </div>
+                        {
+                            user === 'admin' ?
+                            (<>
+                                <div className="label">
+                                    <b style={{fontSize: '10px'}} className="ui red circular label">AD</b>
+                                </div>
+                                <span style={{color: '#C23944'}}>{ReactEmoji.emojify(text)}</span>
+                            </>) :
+                            (<>
+                                <div className="label">
+                                    <b style={{fontSize: '10px'}} className="ui circular label">{user.charAt(0).toUpperCase()}</b>
+                                </div>
+                                <div className="content content1">
+                                    {ReactEmoji.emojify(text)}
+                                </div>
+                            </>)
+                        }
                     </div>
                 </div>
             </div>

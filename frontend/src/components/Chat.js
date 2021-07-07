@@ -5,6 +5,7 @@ import './Chat.css';
 import InfoBar from './InfoBar';
 import Input from './Input';
 import Messages from './Messages/Messages';
+import TabBar from './TabBar';
 
 let socket;
 
@@ -13,6 +14,7 @@ const Chat = ({location}) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
+    const [users, setUsers] = useState([]);
     const [messages, setMessages] = useState([]);
     
     const ENDPOINT = 'ws://localhost:5000';
@@ -39,6 +41,10 @@ const Chat = ({location}) => {
             setMessages([...messages, message]);
         });
 
+        socket.on("roomData", ({users }) => {
+            setUsers(users);
+        });
+
     }, [messages]);
 
     const sendMessage = (e) => {
@@ -48,7 +54,6 @@ const Chat = ({location}) => {
         }
     };
 
-
     // Scrool to bottom
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
@@ -57,13 +62,13 @@ const Chat = ({location}) => {
     useEffect(scrollToBottom, [messages]);
 
 
-    console.log(message, messages);
+    // console.log(message, messages);
 
     return (
         <div className="wrap-chat">
                 
             <div className="chat-left">
-
+                <TabBar users={users} room={room} />
             </div>
             <div className="chat-right">
                 <InfoBar room={room} name={name} />
