@@ -17,7 +17,7 @@ const Chat = ({location}) => {
     const [users, setUsers] = useState([]);
     const [messages, setMessages] = useState([]);
     
-    const ENDPOINT = 'https://group-a.herokuapp.com/';
+    const ENDPOINT = 'https://grochat-app.herokuapp.com/';
 
     useEffect(() =>{
         const {name, room} = queryString.parse(location.search);

@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const router = require('./router');
+const cors = require('cors');
 
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./users.js');
 
@@ -9,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-
+app.use(cors());
 app.use(router);
 
 io.on('connection', (socket) => {
