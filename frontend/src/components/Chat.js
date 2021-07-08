@@ -16,8 +16,9 @@ const Chat = ({location}) => {
     const [message, setMessage] = useState('');
     const [users, setUsers] = useState([]);
     const [messages, setMessages] = useState([]);
+    const [darkmode, setDarkMode] = useState(false);
     
-    const ENDPOINT = 'https://grochat-app.herokuapp.com/';
+    const ENDPOINT = 'ws://localhost:5000';
 
     useEffect(() =>{
         const {name, room} = queryString.parse(location.search);
@@ -62,15 +63,16 @@ const Chat = ({location}) => {
     useEffect(scrollToBottom, [messages]);
 
 
-    // console.log(message, messages);
+    const dark = () => {
+        setDarkMode(!darkmode);
+    };
 
     return (
         <div className="wrap-chat">
-                
             <div className="chat-left">
                 <TabBar users={users} room={room} />
             </div>
-            <div className="chat-right">
+            <div className={`${darkmode ? 'darkmode' : 'chat-right'}`}>
                 <InfoBar room={room} name={name} />
                 <div className="chat-content">
                     <Messages messages={messages} name={name} />
@@ -78,6 +80,7 @@ const Chat = ({location}) => {
                 </div>
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
+            <i onClick={dark} style={{fontSize: '30px', position: 'absolute', bottom: '30px', right: '30px', cursor: 'pointer'}} className="fas fa-moon"></i>
         </div>
     );
 };

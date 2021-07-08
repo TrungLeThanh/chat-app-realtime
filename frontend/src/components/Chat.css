@@ -1,3 +1,8 @@
+:root{
+    --background-chat: #fff;
+    --background-chat-darkmode: #1B2836;
+}
+
 .wrap-chat{
     width: 100%;
     height: 100vh;
@@ -19,7 +24,17 @@
 .chat-right{
     width: 50%;
     height: 75vh;
-    background-color: #fff;
+    background-color: var(--background-chat);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.darkmode{
+    width: 50%;
+    height: 75vh;
+    background-color: var(--background-chat-darkmode);
     display: flex;
     flex-direction: column;
     overflow: hidden;
